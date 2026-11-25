@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>점심 메뉴 룰렛</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <h1>점심 메뉴 룰렛</h1>
+      <p class="subtitle">오늘 점심 뭐 먹지? 메뉴를 추가하고 룰렛을 돌려보세요.</p>
+    </header>
+
+    <main class="main-grid">
+      <!-- 룰렛 영역 -->
+      <section class="card wheel-section" aria-label="룰렛">
+        <div class="wheel-stage">
+          <div class="pointer" aria-hidden="true"></div>
+          <canvas id="wheelCanvas" width="420" height="420" aria-label="점심 메뉴 룰렛 판"></canvas>
+        </div>
+
+        <button id="spinBtn" class="btn btn-primary spin-btn" type="button">
+          돌리기
+        </button>
+
+        <div id="resultBox" class="result-box" aria-live="polite">
+          <span class="result-label">오늘의 추천 메뉴</span>
+          <strong id="resultText" class="result-text is-placeholder">메뉴를 추가하고 돌려보세요</strong>
+        </div>
+      </section>
+
+      <!-- 메뉴 관리 영역 -->
+      <section class="card menu-section" aria-label="메뉴 목록 관리">
+        <div class="section-head">
+          <h2>메뉴 목록</h2>
+          <span id="menuCount" class="count-badge">0개</span>
+        </div>
+
+        <form id="menuForm" class="menu-form" autocomplete="off">
+          <label class="sr-only" for="menuInput">메뉴 이름</label>
+          <input
+            id="menuInput"
+            class="menu-input"
+            type="text"
+            maxlength="30"
+            placeholder="예: 김치찌개, 돈까스, 초밥"
+            required
+          />
+          <button id="addBtn" class="btn btn-secondary" type="submit">추가</button>
+        </form>
+
+        <p id="formHint" class="form-hint" role="status" aria-live="polite"></p>
+
+        <ul id="menuList" class="menu-list" aria-label="추가된 메뉴"></ul>
+
+        <p id="emptyState" class="empty-state">
+          아직 등록된 메뉴가 없습니다.<br />
+          위 입력창에서 점심 메뉴를 추가해 주세요.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
